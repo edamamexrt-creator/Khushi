@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You drew love on my hand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500&family=Noto+Sans+Gurmukhi:wght@500&family=Rozha+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2A0E16; --bg2:#3B1522; --ink:#F6E7D4; --gold:#E7B25C; --henna:#D9803F; --rose:#E8789A;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hind",Georgia,serif;font-weight:300;font-size:1.15rem;line-height:1.65;overflow-x:hidden}
+.display{font-family:"Rozha One",Georgia,serif;font-weight:400}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 24px;background:radial-gradient(ellipse at 50% 38%,var(--bg2) 0%,var(--bg) 68%)}
+.hero svg{width:min(66vw,300px);height:auto;overflow:visible}
+.hero h1{font-size:clamp(2.1rem,7vw,3.6rem);line-height:1.1;margin:28px 0 12px;max-width:16ch;opacity:0;animation:rise .9s 3.2s ease forwards}
+.hero p{margin:0;max-width:34ch;opacity:0;animation:rise .9s 3.8s ease forwards;color:#E9D3BA}
+.cue{margin-top:40px;font-size:.95rem;color:var(--gold);opacity:0;animation:rise .9s 4.6s ease forwards}
+.cue::after{content:"";display:block;width:1px;height:38px;margin:10px auto 0;background:linear-gradient(var(--gold),transparent);animation:pulse 2s ease-in-out infinite}
+.ln{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.7s var(--d,0s) ease forwards}
+.dot{fill:var(--henna);opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .5s var(--d,0s) ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulse{50%{opacity:.25}}
+
+.hero .to{margin:18px 0 0;font-size:1.1rem;color:var(--gold);opacity:0;animation:rise .9s 4.2s ease forwards}
+
+/* trail */
+.trail{position:relative;max-width:980px;margin:0 auto;padding:14vh 20px 6vh}
+.rail{position:absolute;top:0;bottom:0;left:50%;width:90px;transform:translateX(-50%);pointer-events:none}
+.rail svg{position:absolute;inset:0}
+.ghost{fill:none;stroke:var(--gold);stroke-opacity:.16;stroke-width:2}
+.vine{fill:none;stroke:var(--gold);stroke-width:2.4;stroke-linecap:round}
+.node{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--bg);border:2px solid rgba(231,178,92,.4);transition:transform .7s cubic-bezier(.3,1.8,.5,1),background .5s,border-color .5s,box-shadow .7s}
+.node.on{background:var(--rose);border-color:var(--gold);transform:scale(1.35);box-shadow:0 0 0 7px rgba(232,120,154,.18)}
+.msg{width:calc(50% - 70px);margin:0 0 20vh;opacity:.14;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+.msg.on{opacity:1;transform:none}
+.msg:nth-child(odd){margin-left:0;margin-right:auto;text-align:right}
+.msg:nth-child(even){margin-left:auto;margin-right:0;text-align:left}
+.big{font-family:"Rozha One",Georgia,serif;font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.25;margin:0 0 .7rem}
+.big.pa{font-family:"Noto Sans Gurmukhi","Rozha One",sans-serif;font-weight:500;color:var(--gold)}
+.small{margin:0;color:#E9D3BA}
+
+/* finale */
+.finale{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;background:radial-gradient(ellipse at 50% 60%,var(--bg2) 0%,var(--bg) 70%)}
+.finale h2{font-size:clamp(1.9rem,6vw,3rem);line-height:1.15;max-width:18ch;margin:18px 0 28px}
+.heart{width:84px;height:84px;fill:var(--rose);animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.14)}24%{transform:scale(1)}36%{transform:scale(1.08)}}
+button{font:inherit;font-weight:500;color:var(--bg);background:var(--gold);border:0;border-radius:999px;padding:.8rem 1.8rem;cursor:pointer;transition:transform .2s,background .2s}
+button:hover{transform:scale(1.04);background:#F1C27A}
+button:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.last{max-height:0;opacity:0;overflow:hidden;transition:max-height 1s ease,opacity 1s .2s ease;margin-top:0}
+.last.show{max-height:240px;opacity:1;margin-top:28px}
+.last p{font-size:clamp(1.3rem,4vw,1.8rem);line-height:1.3;max-width:22ch;margin:0 auto;color:var(--gold)}
+.fly{position:fixed;z-index:9;pointer-events:none;color:var(--rose);font-size:1.4rem;animation:fly 1.9s ease-out forwards}
+@keyframes fly{from{opacity:1;transform:translate(0,0) scale(.6)}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3)}}
+
+@media (max-width:700px){
+  .rail{left:6px;width:56px;transform:none}
+  .msg{width:auto;margin-left:74px!important;margin-right:0!important;text-align:left!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .ln{animation:none;stroke-dashoffset:0}
+  .dot,.hero h1,.hero p,.hero .to,.cue{animation:none;opacity:1}
+  .msg{opacity:1;transform:none;transition:none}
+  .heart{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg viewBox="-130 -130 260 260" aria-hidden="true"><g id="mandala"></g></svg>
+  <h1 class="display">You drew love on my hand</h1>
+  <p>Every line you made is staying with me, long after the henna fades.</p>
+  <p class="to">For Khushi, my maatein, my mumma</p>
+  <div class="cue">Scroll slowly</div>
+</header>
+
+<main class="trail" id="trail">
+  <div class="rail" id="rail">
+    <svg id="svg" aria-hidden="true"><path class="ghost" id="ghost"/><path class="vine" id="vine"/></svg>
+  </div>
+
+  <section class="msg">
+    <p class="big">You held my hand like it was something precious.</p>
+    <p class="small">Slowly, carefully, one line at a time. That’s exactly how you hold my heart.</p>
+  </section>
+  <section class="msg">
+    <p class="big">Every curve and every tiny dot came from your patience.</p>
+    <p class="small">I could feel how much you cared about getting it right, and I loved you a little more with each one.</p>
+  </section>
+  <section class="msg">
+    <p class="big">Henna gets darker as the days go by.</p>
+    <p class="small">So does my love for you. It just keeps getting deeper.</p>
+  </section>
+  <section class="msg">
+    <p class="big">Whenever I look at my hand, I’ll smile.</p>
+    <p class="small">Because these aren’t just patterns. They’re yours, and they’re on me.</p>
+  </section>
+  <section class="msg">
+    <p class="big">Khushi. My maatein. My mumma.</p>
+    <p class="small">You have a few names in my heart, and I love saying every one of them.</p>
+  </section>
+  <section class="msg">
+    <p class="big pa" lang="pa">ਮੈਨੂੰ ਤੇਰੇ ਨਾਲ ਪਿਆਰ ਹੈ</p>
+    <p class="small">Mainu tere naal pyaar hai. I love you.</p>
+  </section>
+  <section class="msg">
+    <p class="big">Thank you for the laughing, the waiting, and the sitting still.</p>
+    <p class="small">Even the part where I couldn’t touch anything while it dried. Especially that part.</p>
+  </section>
+</main>
+
+<footer class="finale">
+  <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2.1 0 3.8 1.2 5.7 3.3 1.9-2.1 3.6-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.500 16.400 12 21 12 21z"/></svg>
+  <h2 class="display">The colour will fade, but I’ll still be yours.</h2>
+  <button id="btn" type="button">Open the last message</button>
+  <div class="last" id="last"><p class="display">I love you more than every pattern in the world, Khushi.</p></div>
+</footer>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* mandala draws itself on load */
+  var g=document.getElementById('mandala');
+  function add(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);g.appendChild(e);return e}
+  var petal='M0 -22C11 -42 11 -66 0 -88C-11 -66 -11 -42 0 -22Z',k;
+  for(k=0;k<12;k++) add('path',{d:petal,'class':'ln',pathLength:1,transform:'rotate('+k*30+')',style:'--d:'+(0.3+k*0.12)+'s'});
+  for(k=0;k<12;k++) add('path',{d:petal,'class':'ln',pathLength:1,transform:'rotate('+(k*30+15)+') scale(.55)',style:'--d:'+(1.5+k*0.08)+'s'});
+  [14,98,110].forEach(function(r,j){add('circle',{r:r,'class':'ln',pathLength:1,style:'--d:'+(0.1+j*0.45)+'s'})});
+  for(k=0;k<36;k++){var a=k*10*Math.PI/180;add('circle',{cx:(Math.cos(a)*120).toFixed(1),cy:(Math.sin(a)*120).toFixed(1),r:2.4,'class':'dot',style:'--d:'+(2+k*0.035)+'s'})}
+
+  /* vine that draws as you scroll */
+  var trail=document.getElementById('trail'),rail=document.getElementById('rail'),svg=document.getElementById('svg'),
+      vine=document.getElementById('vine'),ghost=document.getElementById('ghost'),
+      items=[].slice.call(document.querySelectorAll('.msg')),nodes=[],ys=[],L=1,W=90,A=22,CX=45;
+  items.forEach(function(){var n=document.createElement('div');n.className='node';rail.appendChild(n);nodes.push(n)});
+  function xAt(y){return CX+A*Math.sin(y/70)}
+  function build(){
+    var h=trail.offsetHeight;W=rail.clientWidth;CX=W/2;A=W*0.26;
+    svg.setAttribute('width',W);svg.setAttribute('height',h);svg.setAttribute('viewBox','0 0 '+W+' '+h);
+    var d='',y;for(y=0;y<=h;y+=6)d+=(y?'L':'M')+xAt(y).toFixed(1)+' '+y;
+    vine.setAttribute('d',d);ghost.setAttribute('d',d);
+    L=vine.getTotalLength();vine.style.strokeDasharray=L;
+    var tr=trail.getBoundingClientRect();
+    items.forEach(function(m,i){var r=m.getBoundingClientRect();var yy=r.top-tr.top+r.height/2;ys[i]=yy;nodes[i].style.top=yy+'px';nodes[i].style.left=xAt(yy)+'px'});
+    update();
+  }
+  function update(){
+    var r=trail.getBoundingClientRect(),h=r.height,front=RM?h+1:innerHeight*0.62-r.top;
+    var p=Math.max(0,Math.min(1,front/h));
+    vine.style.strokeDashoffset=L*(1-p);
+    items.forEach(function(m,i){var on=ys[i]<front;m.classList.toggle('on',on);nodes[i].classList.toggle('on',on)});
+  }
+  addEventListener('scroll',update,{passive:true});
+  addEventListener('resize',build);
+  addEventListener('load',build);
+  build();
+
+  /* last message */
+  var btn=document.getElementById('btn'),last=document.getElementById('last');
+  btn.addEventListener('click',function(){
+    last.classList.add('show');btn.textContent='I mean it';
+    var b=btn.getBoundingClientRect(),i;
+    for(i=0;i<22;i++){
+      var s=document.createElement('span');s.className='fly';s.textContent='♥️';
+      s.style.left=(b.left+b.width/2)+'px';s.style.top=(b.top+b.height/2)+'px';
+      s.style.setProperty('--dx',((Math.random()-.5)*320)+'px');
+      s.style.setProperty('--dy',(-80-Math.random()*240)+'px');
+      s.style.animationDelay=(Math.random()*.3)+'s';
+      document.body.appendChild(s);
+      setTimeout(function(el){el.remove()}.bind(null,s),2400);
+    }
+  });
+})();
+</script>
+</body>
+</html>
